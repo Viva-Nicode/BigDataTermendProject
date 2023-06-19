@@ -21,11 +21,7 @@ with open("./ids.txt", "r") as file:
                 )
             )
         )
-        wait.until(
-            EC.visibility_of_element_located(
-                (By.CSS_SELECTOR, "li.css-1qq23jn.e1iiyghw3")
-            )
-        )
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "li.css-1qq23jn.e1iiyghw3")))
         time.sleep(3)
         gameList = driver.find_element(
             By.CSS_SELECTOR,
@@ -47,14 +43,10 @@ with open("./ids.txt", "r") as file:
                 By.CSS_SELECTOR,
                 "div:first-child > div.content > div > div.game > div.type",
             ).text
-            isregame = li.find_element(
-                By.CSS_SELECTOR, "div:first-child"
-            ).get_attribute("result")
+            isregame = li.find_element(By.CSS_SELECTOR, "div:first-child").get_attribute("result")
 
             if gametype == "솔랭" and isregame != "REMAKE":
-                li.find_element(
-                    By.CSS_SELECTOR, "div:first-child > div.action > button.detail"
-                ).click()
+                li.find_element(By.CSS_SELECTOR, "div:first-child > div.action > button.detail").click()
                 time.sleep(2)
 
                 red = li.find_element(
@@ -70,75 +62,27 @@ with open("./ids.txt", "r") as file:
                 trs2 = blue.find_elements(By.TAG_NAME, "tr")
 
                 for index, tr in enumerate(trs):
-                    champ = tr.find_element(
-                        By.CSS_SELECTOR, "td:first-child > a > div > img"
-                    ).get_attribute("alt")
-                    spell_1 = tr.find_element(
-                        By.CSS_SELECTOR, "td.spells > div:first-child > img"
-                    ).get_attribute("alt")
-                    spell_2 = tr.find_element(
-                        By.CSS_SELECTOR, "td.spells > div:nth-child(2) > img"
-                    ).get_attribute("alt")
-                    runes_1 = tr.find_element(
-                        By.CSS_SELECTOR, "td.runes > div:first-child > img"
-                    ).get_attribute("alt")
-                    runes_2 = tr.find_element(
-                        By.CSS_SELECTOR, "td.runes > div:nth-child(2) > img"
-                    ).get_attribute("alt")
+                    champ = tr.find_element(By.CSS_SELECTOR, "td:first-child > a > div > img").get_attribute("alt")
+                    spell_1 = tr.find_element(By.CSS_SELECTOR, "td.spells > div:first-child > img").get_attribute("alt")
+                    spell_2 = tr.find_element(By.CSS_SELECTOR, "td.spells > div:nth-child(2) > img").get_attribute("alt")
+                    runes_1 = tr.find_element(By.CSS_SELECTOR, "td.runes > div:first-child > img").get_attribute("alt")
+                    runes_2 = tr.find_element(By.CSS_SELECTOR, "td.runes > div:nth-child(2) > img").get_attribute("alt")
                     nickname = tr.find_element(By.CSS_SELECTOR, "td.name > a").text
                     result = tr.get_attribute("result")
-                    r = (
-                        result
-                        + ","
-                        + champ
-                        + ","
-                        + nickname
-                        + ","
-                        + spell_1
-                        + ","
-                        + spell_2
-                        + ","
-                        + runes_1
-                        + ","
-                        + runes_2
-                    )
+                    r = result + "," + champ + "," + nickname + "," + spell_1 + "," + spell_2 + "," + runes_1 + "," + runes_2
                     with open("./records.txt", "a") as file2:
                         file2.write(r)
                         file2.write("\n")
 
                 for index, tr in enumerate(trs2):
-                    champ = tr.find_element(
-                        By.CSS_SELECTOR, "td:first-child > a > div > img"
-                    ).get_attribute("alt")
-                    spell_1 = tr.find_element(
-                        By.CSS_SELECTOR, "td.spells > div:first-child > img"
-                    ).get_attribute("alt")
-                    spell_2 = tr.find_element(
-                        By.CSS_SELECTOR, "td.spells > div:nth-child(2) > img"
-                    ).get_attribute("alt")
-                    runes_1 = tr.find_element(
-                        By.CSS_SELECTOR, "td.runes > div:first-child > img"
-                    ).get_attribute("alt")
-                    runes_2 = tr.find_element(
-                        By.CSS_SELECTOR, "td.runes > div:nth-child(2) > img"
-                    ).get_attribute("alt")
+                    champ = tr.find_element(By.CSS_SELECTOR, "td:first-child > a > div > img").get_attribute("alt")
+                    spell_1 = tr.find_element(By.CSS_SELECTOR, "td.spells > div:first-child > img").get_attribute("alt")
+                    spell_2 = tr.find_element(By.CSS_SELECTOR, "td.spells > div:nth-child(2) > img").get_attribute("alt")
+                    runes_1 = tr.find_element(By.CSS_SELECTOR, "td.runes > div:first-child > img").get_attribute("alt")
+                    runes_2 = tr.find_element(By.CSS_SELECTOR, "td.runes > div:nth-child(2) > img").get_attribute("alt")
                     nickname = tr.find_element(By.CSS_SELECTOR, "td.name > a").text
                     result = tr.get_attribute("result")
-                    r = (
-                        result
-                        + ","
-                        + champ
-                        + ","
-                        + nickname
-                        + ","
-                        + spell_1
-                        + ","
-                        + spell_2
-                        + ","
-                        + runes_1
-                        + ","
-                        + runes_2
-                    )
+                    r = result + "," + champ + "," + nickname + "," + spell_1 + "," + spell_2 + "," + runes_1 + "," + runes_2
                     with open("./records.txt", "a") as file2:
                         file2.write(r)
                         file2.write("\n")
