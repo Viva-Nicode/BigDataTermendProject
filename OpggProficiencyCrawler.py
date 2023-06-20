@@ -8,11 +8,11 @@ driver = webdriver.Chrome()
 driver.implicitly_wait(100)
 count = 1
 logging.basicConfig(filename="test.log", level=logging.ERROR)
-with open("./temp_record.txt", "r") as file:
+with open("./heheeh.txt", "r") as file:
     line = file.readline().rstrip()
     while line:
         championName = line.split(",")[1]
-        nickname = line.split(",")[0]
+        nickname = line.split(",")[2]
         url = f"https://www.op.gg/summoners/kr/{nickname}/champions"
         driver.get(url)
         time.sleep(8)
@@ -69,9 +69,3 @@ with open("./temp_record.txt", "r") as file:
         count += 1
 
 
-# 웹서버에 너무 짧은 시간에 많은 요청을 하면 429 too many requests 에러가 발생한다.
-# 따라서 적당한 시간 간격을 두고 요청해야한다.
-# 파이썬에서 한 라인을 얻어올때 마지막문자는 개행문자가 붙으므로 rstrip()으로 제거해준다.
-# 파일을 open할때 가능한 as file에서 file의 이름을 각각 다르게 해준다. 같은 파일을 연다고 하더라도 다르게 해준다.
-# 지고 이기는게 자명한 경우는 그나마 정확도가 있을법 하고, 애매한경우는 애매하게 예측될듯
-# 레이어를 나눈다던지? 가지처럼
